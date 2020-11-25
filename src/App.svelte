@@ -1,9 +1,23 @@
 <script>
 	export let name;
 	let formWasSent = false;
+	let showError = false;
+	let emailFieldValue = "";
+
+	let isFormValid = true;
 
 	function submitForm() {
-		formWasSent = true;
+		isFormValid = checkIfFormValid();
+		formWasSent = isFormValid;
+		showError = !isFormValid;
+	}
+
+	function checkIfFormValid() {
+		const emailPattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		if (emailFieldValue.match(emailPattern)) {
+			return true;
+		}
+		return false;
 	}
 </script>
 
@@ -13,7 +27,9 @@
 
 <!-- <form class="ui form" method="post" action="#form-anchor"> -->
 {#if !formWasSent}
-
+	{#if showError} 
+		<h3>Пожалуйста, заполните все обязательные поля</h3>
+	{/if}
 	<div class="three fields">
 		<div class="field">
 			<label for="last_name">Фамилия <span class="required-field">*</span></label>
@@ -42,7 +58,7 @@
 		</div>
 		<div class="field">
 			<label for="email">Email <span class="required-field">*</span></label>
-			<input id="email" type="text" placeholder="" name="email" maxlength="250" value="">
+			<input bind:value={emailFieldValue} id="email" type="text" placeholder="" name="email" maxlength="250">
 		</div>
 	</div>
 
@@ -56,49 +72,47 @@
 	<div class="form-spacer"></div>
 
 	<div class="three fields">
+		<div class="two wide field">
+			<label for="year">Курс <span class="required-field">*</span></label>
+			<input id="year" type="text" placeholder="" name="year" maxlength="250" value="">
+		</div>
 
-	<div class="two wide field">
-		<label for="year">Курс <span class="required-field">*</span></label>
-		<input id="year" type="text" placeholder="" name="year" maxlength="250" value="">
-	</div>
+		<div class="seven wide field">
+			<label for="faculty">Факультет <span class="required-field">*</span></label>
+			<input id="faculty" type="text" placeholder="" name="faculty" maxlength="250" value="">
+		</div>
 
-	<div class="seven wide field">
-		<label for="faculty">Факультет <span class="required-field">*</span></label>
-		<input id="faculty" type="text" placeholder="" name="faculty" maxlength="250" value="">
-	</div>
-
-	<div class="seven wide field">
-		<label for="field_of_study">Направление обучения <span class="required-field">*</span></label>
-		<input id="field_of_study" type="text" placeholder="" name="field_of_study" maxlength="250" value="">
-	</div>
+		<div class="seven wide field">
+			<label for="field_of_study">Направление обучения <span class="required-field">*</span></label>
+			<input id="field_of_study" type="text" placeholder="" name="field_of_study" maxlength="250" value="">
+		</div>
 	</div>
 
 	<div class="form-spacer"></div>
 
 	<div class="field">
-	<label>Какие направления в IT тебе интересны? <span class="required-field">*</span></label> 
+		<label>Какие направления в IT тебе интересны? <span class="required-field">*</span></label> 
 	</div>
 
 	<div class="inline fields">
-
-	<div class="field">
-		<div class="ui checkbox">
-		<input type="checkbox" name="interested_in_qa" tabindex="0" class="hidden">
-		<label class="internship-form-inline-checkbox">QA</label>
+		<div class="field">
+			<div class="ui checkbox">
+				<input id="interested_in_qa" type="checkbox" name="interested_in_qa" tabindex="0" class="hidden">
+				<label for="interested_in_qa" class="internship-form-inline-checkbox">QA</label>
+			</div>
 		</div>
-	</div>
 
-	<div class="field">
-		<div class="ui checkbox">
-		<input type="checkbox" name="interested_in_qa_automation" tabindex="0" class="hidden">
-		<label class="internship-form-inline-checkbox">QA Automation</label>
+		<div class="field">
+			<div class="ui checkbox">
+				<input id="interested_in_qa_automation" type="checkbox" name="interested_in_qa_automation" tabindex="0" class="hidden">
+				<label for="interested_in_qa_automation" class="internship-form-inline-checkbox">QA Automation</label>
+			</div>
 		</div>
-	</div>
 
-	<div class="field">
-		<div class="ui checkbox">
-			<input type="checkbox" name="interested_in_devops" tabindex="0" class="hidden">
-			<label class="internship-form-inline-checkbox">DevOps</label>
+		<div class="field">
+			<div class="ui checkbox">
+				<input id="interested_in_devops" type="checkbox" name="interested_in_devops" tabindex="0" class="hidden">
+				<label for="interested_in_devops" class="internship-form-inline-checkbox">DevOps</label>
 			</div>
 		</div>
 	</div>
