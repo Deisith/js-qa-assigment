@@ -1,7 +1,7 @@
 # Task 1 
 ## Напишите SQL запросы по таблицам:
 
-![](WARN_REPLACE_IMG_URL)
+![still tables](DB_screen.png "Tables")
 
 ⦁	Select all phone numbers with empty USERID`SELECT ALL FPHONENUMBER FROM PHONE_NUMBERS WHERE USERID='';
 ```SQL
@@ -54,7 +54,7 @@ VALUES
 <br>
 
 # Task 2, Way 2.1
-## Написать 7-10 тест-кейсов на форму заполнения заявок на стажировку на сайте DINS. https://www.dins.ru/?p=internship Важно! Тест-кейсы нужно написать на английском языке.
+### Написать 7-10 тест-кейсов на форму заполнения заявок на стажировку на сайте DINS. https://www.dins.ru/?p=internship Важно! Тест-кейсы нужно написать на английском языке.
 
 ### <span style="color: green"> Table 1 - Set valid values for each field </span>
 | **Correct values for each field** | **Input data** | **Notice** | 
@@ -79,32 +79,32 @@ VALUES
 40 |  | 
 | accept consent to processing is personal (choose checkbox) | check-in the checkbox |  | 
 | confirm your action in the reCAPTCHA checkbox | check-in the checkbox |  | 
+<br>
 
-Case 1 - All fields are filled correctly.
-
-| **PreConditions** |  | 
-| --- | --- |
-| 1. Opened site: [https://www.dins.ru/?p=internship](https://www.dins.ru/?p=internship)
-2. All fields are filled in correctly according to table 1 |  | 
-| Action | Expected response/Condition | 
-| **Test Case** |  | 
-| Click the button ‘Отправить заявку на стажировку’
- | 1. site address change to ‘https://www.dins.ru/?p=internship#form-anchor’
-
-2. message appeared ‘Спасибо! Ваша заявка на стажировку отправлена. ’
-and
-‘Остались вопросы? – Пиши на jobs@dins.ru!’ | 
-|  |  | 
-| **PostConditions** |  | 
-| Press to ‘Назад на страницу о стажировке’ | the page ‘[https://www.dins.ru/?p=internship](https://www.dins.ru/?p=internship)’  should be opened. All input fields are empty | 
-
-Case 2 - All fields are empty.
+## Case 1 - All fields are filled correctly.
 
 | **General terms** |  | 
 | --- | --- |
 | 1. Opened site: [https://www.dins.ru/?p=internship](https://www.dins.ru/?p=internship)
 2. All input fields are filled correctly |  | 
-| Action | Expected response/Condition | 
+| **Action** | **Expected response/Condition** | 
+| **Test Case** |  | 
+| Click the button ‘Отправить заявку на стажировку’ | 1. site address change to ‘https://www.dins.ru/?p=internship#form-anchor’ | 
+|  | 2. message appeared ‘Спасибо! Ваша заявка на стажировку отправлена.’ |
+|  | 3. message appeared ‘Остались вопросы? – Пиши на jobs@dins.ru!’ |  
+
+| **PostConditions** |  | 
+| --- | --- |
+| Press to ‘Назад на страницу о стажировке’ | the page ‘[https://www.dins.ru/?p=internship](https://www.dins.ru/?p=internship)’  should be opened. All input fields are empty | 
+<br>
+
+## Case 2 - All fields are empty.
+
+| **General terms** |  | 
+| --- | --- |
+| 1. Opened site: [https://www.dins.ru/?p=internship](https://www.dins.ru/?p=internship)
+| 2. All input fields are empty |   
+| **Action** | **Expected response/Condition** | 
 | **Test Case** |  | 
 | Click the button ‘Отправить заявку на стажировку’ | site address change to ‘https://www.dins.ru/?p=internship#form-anchor’ | 
 |  | all fields are reachable to filling | 
@@ -113,57 +113,55 @@ Case 2 - All fields are empty.
 |  | the color of the sides of all fields are changed to red (#9f3a38) | 
 |  | the color of all fields labels are changed to red (#9f3a38) | 
 |  | * reCAPTCHA is placed on the special field with the negative event. The current test is being checked on the background field | 
+<br>
 
-Cases 3-5 - Email validation
+## Cases 3-5 - Email validation
+Notice: I selected a few cases and grouped them more compactly
+
+| **General terms** |  |  | 
+| --- | --- | --- |
+| 1. Opened site: [https://www.dins.ru/?p=internship](https://www.dins.ru/?p=internship) |
+| 2. The birthday field is empty| 
+| 3. Other fields are filled in correctly according to table 1  |  
+
+| **Test cases** |  |  | 
+| --- | --- | --- |
+| **Description** | **Test input data** | **Expected response/Condition** |  
+| The double point in the domain name | ivan.ivanovisch@mail..foo | Warning message of a mistake in the email field | 
+| Missing the at symbol | ivan.ivanovischmail.foo | Warning message of a mistake in the email field | 
+| Missing the domain name | ivan.ivanovisch@ | Warning message of a mistake in the email field | 
+<br>
+
+## Cases 6, 7 - Birthday validation
 Notice: I selected a few cases and grouped them more compactly
 
 | **General terms** |  |  | 
 | --- | --- | --- |
 | 1. Opened site: [https://www.dins.ru/?p=internship](https://www.dins.ru/?p=internship)
-2. The birthday field is empty
-3. Other fields are filled in correctly according to table 1  
+| 2. The birthday field is empty
+| 3. Other fields are filled in correctly according to table 1 |  |  | 
 
 | **Test cases** |  |  | 
 | --- | --- | --- |
-| Description | Test input data | Expected response/Condition | 
-| The double point in the domain name | ivan.ivanovisch@mail..foo | Warning message of a mistake in the email field | 
-| Missing the at symbol | ivan.ivanovischmail.foo | Warning message of a mistake in the email field | 
-| Missing the domain name | ivan.ivanovisch@ | Warning message of a mistake in the email field | 
-
-Cases 6, 7 - Birthday validation
-Notice: I selected a few cases and grouped them more compactly
-
-| **General terms** |  |  | 
-| --- | --- | --- |
-| 4. Opened site: [https://www.dins.ru/?p=internship](https://www.dins.ru/?p=internship)
-5. The birthday field is empty
-6. Other fields are filled in correctly according to table 1 |  |  | 
-
-| **Test cases** |  |  | 
-| --- | --- | --- |
-| Description | Test input data | Expected response/Condition | 
-| 
-Correct Birthday input | 
-31.10.1995 | 1. No warning messages
-2. The Birthday field don’t block request sending | 
+| **Description** | **Test input data** | **Expected response/Condition** |  
+| without a numeral | 31.10.199 | Warning message of a mistake in the phone number field |
 | Mistake day input | 32.10.1995 | Warning message of a mistake in the Birthday field | 
 
 The ideas to improve:
 1. Сhange the input free data form to the drop-down list or similar form.
-2. 
-Cases 8-10  -  Phone number validation
+
+## Cases 8-10  -  Phone number validation
 Notice: I selected a few cases and grouped them more compactly
 
 | **General terms** |  |  | 
 | --- | --- | --- |
-| 7. Opened site: [https://www.dins.ru/?p=internship](https://www.dins.ru/?p=internship)
-8. The birthday field is empty
-9. Other fields are filled in correctly according to table 1 |  |  | 
+| 1. Opened site: [https://www.dins.ru/?p=internship](https://www.dins.ru/?p=internship)
+| 2. The birthday field is empty
+| 3. Other fields are filled in correctly according to table 1 |  |  | 
 
 | **Test cases** |  |  | 
 | --- | --- | --- |
 | Description | Test input data | Expected response/Condition | 
-| Acceptable format without additional symbols | +79998887766 | 1. No warning messages
-2. The Email field don’t block request sending | 
+| Short number | ++7(999)888-77 | Warning message of a mistake in the phone number field |
 | Wrong letter input | +7(999)888-77-0o | Warning message of a mistake in the phone number field | 
 | Long number | +7(999)888-77-665 | Warning message of a mistake in the phone number field |

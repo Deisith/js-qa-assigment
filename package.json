@@ -23,6 +23,8 @@
     "svelte-jester": "^1.1.5"
   },
   "dependencies": {
+    "dayjs": "^1.9.6",
+    "libphonenumber-js": "^1.9.4",
     "sirv-cli": "^1.0.0"
   }
 }
